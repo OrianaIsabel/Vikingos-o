@@ -1,9 +1,25 @@
-import example.pepita
+import example.*
 
-describe "group of tests for pepita" {
+describe "Tests para vikingos" {
 
-  test "pepita has initial energy" {
-    assert.equals(100, pepita.energy())
+  const thom = new Soldado(casta = jarl, armas = 20, vidasCobradas = 150)
+  const radiohead = new Expedicion()
+  
+  test "Thom no puede expedicionar" {
+    assert.throwsExceptionWithMessage("no se puede subir", {(thom.subirseA(radiohead))})
   }
 
+  const creep = new Expedicion(vikingos = [thom], regionesInvadidas = [pilar, moron])
+  const pilar = new Capital(factorDeRiqueza = 20)
+  const moron = new Aldea(crucifijos = 30)
+
+  test "creep vale la pena" {
+    assert.that(creep.valeLaPena())
+  }
+
+  test "thom escala socialmente" {
+    thom.escalarSocialmente()
+    assert.equals(karl, thom.casta())
+    assert.equals(30, thom.armas())
+  }
 }
